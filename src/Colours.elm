@@ -28,8 +28,8 @@ withAlpha alpha colour =
     RGBA r g b _ ->
       RGBA r g b alpha
 
-black : String
-black = "#000"
+black : Colour
+black = RGB 0 0 0
 
-red : String
-red = "#f00"
+red : Colour
+red = RGB 255 0 0

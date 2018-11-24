@@ -4,7 +4,7 @@ import Html.Events exposing (onClick)
 import Html.Attributes exposing (style)
 import Random
 
-import Colours
+import Colours exposing (Colour, toCss)
 
 -- MAIN
 
@@ -67,7 +67,7 @@ subscriptions model =
 
 -- VIEW
 
-numberColour : Int -> String
+numberColour : Int -> Colour
 numberColour n =
   if n >= 0 then
     Colours.black
@@ -79,7 +79,7 @@ numberStyle n =
   [ style "width" "5em"
   , style "display" "inline-block"
   , style "text-align" "center"
-  , style "color" (numberColour n)
+  , style "color" (numberColour n |> toCss)
   ]
 
 view : Model -> Html Msg
