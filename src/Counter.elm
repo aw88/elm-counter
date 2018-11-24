@@ -33,7 +33,9 @@ init _ =
 type Msg 
   = Increment Int
   | Decrement Int
+  | SetNumber Int
   | Reset
+  | Randomize
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -44,8 +46,14 @@ update msg model =
     Decrement n ->
       (Model (model.number - n), Cmd.none)
 
+    SetNumber n ->
+      (Model n, Cmd.none)
+
     Reset ->
       (Model 0, Cmd.none)
+
+    Randomize ->
+      (model, Random.generate SetNumber (Random.int -10 10))
 
 
 -- SUBSCRIPTIONS
@@ -83,4 +91,5 @@ view model =
     , button [ onClick (Increment 1) ] [ text "+" ]
     , button [ onClick (Increment 2) ] [ text "+2" ]
     , button [ onClick Reset ] [ text "Reset" ]
+    , button [ onClick Randomize ] [ text "Randomize" ]
     ]
