@@ -4,6 +4,8 @@ import Html.Events exposing (onClick)
 import Html.Attributes exposing (style)
 import Random
 
+import Colours
+
 -- MAIN
 
 main =
@@ -65,14 +67,12 @@ subscriptions model =
 
 -- VIEW
 
-colors =
-  { black = "#000"
-  , red = "#f00"
-  }
-
 numberColour : Int -> String
 numberColour n =
-  if n >= 0 then colors.black else colors.red
+  if n >= 0 then
+    Colours.black
+  else
+    Colours.red
 
 numberStyle : Int -> List (Html.Attribute msg)
 numberStyle n =
