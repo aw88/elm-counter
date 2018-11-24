@@ -4,7 +4,6 @@ import Html.Events exposing (onClick)
 import Html.Attributes exposing (style)
 import Random
 
-
 -- MAIN
 
 main =
@@ -58,11 +57,21 @@ subscriptions model =
 
 -- VIEW
 
-numberStyle : List (Html.Attribute msg)
-numberStyle =
+colors =
+  { black = "#000"
+  , red = "#f00"
+  }
+
+numberColour : Int -> String
+numberColour n =
+  if n >= 0 then colors.black else colors.red
+
+numberStyle : Int -> List (Html.Attribute msg)
+numberStyle n =
   [ style "width" "5em"
   , style "display" "inline-block"
   , style "text-align" "center"
+  , style "color" (numberColour n)
   ]
 
 view : Model -> Html Msg
@@ -70,7 +79,7 @@ view model =
   div []
     [ button [ onClick (Decrement 2) ] [ text "-2" ]
     , button [ onClick (Decrement 1) ] [ text "-" ]
-    , span numberStyle [ text (String.fromInt model.number) ]
+    , span (numberStyle model.number) [ text (String.fromInt model.number) ]
     , button [ onClick (Increment 1) ] [ text "+" ]
     , button [ onClick (Increment 2) ] [ text "+2" ]
     , button [ onClick Reset ] [ text "Reset" ]
