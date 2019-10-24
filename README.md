@@ -8,6 +8,8 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Installing development dependencies
 
+Install `elm` by following the [installation instructions](https://guide.elm-lang.org/install/elm.html)
+
 ```
 npm install
 ```
